@@ -69,17 +69,38 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["TrueZen.nvim"] = {
+    config = { "require('config.true-zen')" },
+    loaded = true,
+    path = "/Users/zhaoqi/.local/share/nvim/site/pack/packer/start/TrueZen.nvim",
+    url = "https://github.com/Pocco81/TrueZen.nvim"
+  },
   ["impatient.nvim"] = {
     config = { "require('impatient')" },
     loaded = true,
     path = "/Users/zhaoqi/.local/share/nvim/site/pack/packer/start/impatient.nvim",
     url = "https://github.com/lewis6991/impatient.nvim"
   },
+  ["lush.nvim"] = {
+    loaded = true,
+    path = "/Users/zhaoqi/.local/share/nvim/site/pack/packer/start/lush.nvim",
+    url = "https://github.com/rktjmp/lush.nvim"
+  },
+  ["onehalf-lush"] = {
+    loaded = true,
+    path = "/Users/zhaoqi/.local/share/nvim/site/pack/packer/start/onehalf-lush",
+    url = "https://github.com/CodeGradox/onehalf-lush"
+  },
   ["packer.nvim"] = {
     loaded = false,
     needs_bufread = false,
     path = "/Users/zhaoqi/.local/share/nvim/site/pack/packer/opt/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
+  },
+  ["vimage.nvim"] = {
+    loaded = true,
+    path = "/Users/zhaoqi/.local/share/nvim/site/pack/packer/start/vimage.nvim",
+    url = "https://github.com/heapslip/vimage.nvim"
   }
 }
 
@@ -88,6 +109,10 @@ time([[Defining packer_plugins]], false)
 time([[Config for impatient.nvim]], true)
 require('impatient')
 time([[Config for impatient.nvim]], false)
+-- Config for: TrueZen.nvim
+time([[Config for TrueZen.nvim]], true)
+require('config.true-zen')
+time([[Config for TrueZen.nvim]], false)
 if should_profile then save_profiles() end
 
 end)

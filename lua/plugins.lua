@@ -12,6 +12,16 @@ require("packer").startup({
     -- Packer
     use({"wbthomason/packer.nvim", opt = true})
 
+    -- theme
+    use "rktjmp/lush.nvim"
+    use "CodeGradox/onehalf-lush"
+
+    -- distraction writing plugin
+    use({'Pocco81/TrueZen.nvim', config = [[require('config.true-zen')]]})
+
+    -- preview image
+    use "heapslip/vimage.nvim"
+
   end,
   config = {
     max_jobs = 16,
