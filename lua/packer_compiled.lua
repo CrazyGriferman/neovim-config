@@ -77,6 +77,12 @@ _G.packer_plugins = {
     path = "/Users/zhaoqi/.local/share/nvim/site/pack/packer/opt/LeaderF",
     url = "https://github.com/Yggdroot/LeaderF"
   },
+  ["auto-pairs"] = {
+    config = { "require('config.auto-pairs)" },
+    loaded = true,
+    path = "/Users/zhaoqi/.local/share/nvim/site/pack/packer/start/auto-pairs",
+    url = "https://github.com/jiangmiao/auto-pairs"
+  },
   ["cmp-buffer"] = {
     after_files = { "/Users/zhaoqi/.local/share/nvim/site/pack/packer/opt/cmp-buffer/after/plugin/cmp_buffer.lua" },
     load_after = {
@@ -181,7 +187,7 @@ _G.packer_plugins = {
     url = "https://github.com/windwp/nvim-autopairs"
   },
   ["nvim-cmp"] = {
-    after = { "cmp-nvim-lsp", "cmp-buffer", "cmp-nvim-lua", "cmp-nvim-ultisnips", "cmp-path" },
+    after = { "cmp-nvim-lua", "cmp-buffer", "cmp-nvim-ultisnips", "cmp-path", "cmp-nvim-lsp" },
     config = { "require('config.nvim-cmp')" },
     load_after = {
       ["lspkind-nvim"] = true
@@ -260,6 +266,10 @@ time([[Defining packer_plugins]], false)
 time([[Config for impatient.nvim]], true)
 require('impatient')
 time([[Config for impatient.nvim]], false)
+-- Config for: auto-pairs
+time([[Config for auto-pairs]], true)
+require('config.auto-pairs)
+time([[Config for auto-pairs]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd ultisnips ]]
@@ -274,8 +284,8 @@ vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
+vim.cmd [[au VimEnter * ++once lua require("packer.load")({'hop.nvim', 'which-key.nvim'}, { event = "VimEnter *" }, _G.packer_plugins)]]
 vim.cmd [[au BufEnter * ++once lua require("packer.load")({'lspkind-nvim', 'nvim-treesitter'}, { event = "BufEnter *" }, _G.packer_plugins)]]
-vim.cmd [[au VimEnter * ++once lua require("packer.load")({'which-key.nvim', 'hop.nvim'}, { event = "VimEnter *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end

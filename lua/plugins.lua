@@ -80,6 +80,8 @@ require("packer").startup({
       end
     }
 
+    use {"jiangmiao/auto-pairs", config = [[require('config.auto-pairs)]]}
+
   end,
   config = {
     max_jobs = 16,
