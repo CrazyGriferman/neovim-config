@@ -11,10 +11,32 @@ require("packer").startup({
 
     -- Packer
     use({"wbthomason/packer.nvim", opt = true})
+
+    -- Useful lua functions used ny lots of plugins
+    use "nvim-lua/plenary.nvim" 
     
     -- snippets
     use "SirVer/ultisnips"
     use "honza/vim-snippets"
+
+    use {"onsails/lspkind-nvim", event = "BufEnter"}
+    -- auto-completion engine
+    use {"hrsh7th/nvim-cmp", after = "lspkind-nvim", config = [[require('config.nvim-cmp')]]}
+
+    -- nvim-cmp completion sources
+    use {"hrsh7th/cmp-nvim-lsp", after = "nvim-cmp"}
+    use {"hrsh7th/cmp-nvim-lua", after = "nvim-cmp"}
+    use {"hrsh7th/cmp-path", after = "nvim-cmp"}
+    use {"hrsh7th/cmp-buffer", after = "nvim-cmp"}
+
+    -- custom utilsnips support
+    use {"quangnguyen30192/cmp-nvim-ultisnips", after = {'nvim-cmp', 'ultisnips'}}
+
+    -- nvim-lsp configuration (it relies on cmp-nvim-lsp, so it should be loaded after cmp-nvim-lsp).
+    use({ "neovim/nvim-lspconfig", after = "cmp-nvim-lsp", config = [[require('config.lsp.init')]] })
+    use "williamboman/nvim-lsp-installer" -- simple to use language server installer
+    use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
+    use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
 
     -- theme
     use "rktjmp/lush.nvim"
