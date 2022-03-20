@@ -12,3 +12,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 """"""""""""""""""""""""""""""Goyo settings""""""""""""""""""""""""""""""
 let g:goyo_width=85
 nnoremap <leader>z :Goyo<CR>
+
+
+""""""""""""""""""""""""""""""markdown-preview settings""""""""""""""""""""""""""""""
+nnoremap <leader>p :MarkdownPreviewToggle<CR>
