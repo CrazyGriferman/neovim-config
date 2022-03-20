@@ -80,7 +80,18 @@ require("packer").startup({
       end
     }
 
-    use {"jiangmiao/auto-pairs", config = [[require('config.auto-pairs)]]}
+    -- auto-pairs for braces
+    use {"jiangmiao/auto-pairs", config = [[require('config.auto-pairs')]]}
+
+    use {
+      "kyazdani42/nvim-tree.lua",
+      requires = {
+        'kyazdani42/nvim-web-devicons', -- optional, for file icon
+      }, config = [[require('config.nvim-tree')]]}
+
+    -- liveload
+    use "turbio/bracey.vim"
+
 
   end,
   config = {

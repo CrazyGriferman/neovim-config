@@ -102,3 +102,10 @@ nnoremap <leader>tg <cmd>Telescope live_grep<cr>
 nnoremap <leader>tb <cmd>Telescope buffers<cr>
 nnoremap <leader>th <cmd>Telescope help_tags<cr>
 
+
+"""""""""""""""""""""""""""""Telescope settings"""""""""""""""""""""
+
+nnoremap <leader>l :NvimTreeToggle<CR>
+nnoremap <leader>ll :NvimTreeFocus<CR>
+nnoremap <leader>nr :NvimTreeRefresh<CR>
+nnoremap <leader>nf :NvimTreeFindFile<CR>

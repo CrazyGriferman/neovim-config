@@ -78,10 +78,15 @@ _G.packer_plugins = {
     url = "https://github.com/Yggdroot/LeaderF"
   },
   ["auto-pairs"] = {
-    config = { "require('config.auto-pairs)" },
+    config = { "require('config.auto-pairs')" },
     loaded = true,
     path = "/Users/zhaoqi/.local/share/nvim/site/pack/packer/start/auto-pairs",
     url = "https://github.com/jiangmiao/auto-pairs"
+  },
+  ["bracey.vim"] = {
+    loaded = true,
+    path = "/Users/zhaoqi/.local/share/nvim/site/pack/packer/start/bracey.vim",
+    url = "https://github.com/turbio/bracey.vim"
   },
   ["cmp-buffer"] = {
     after_files = { "/Users/zhaoqi/.local/share/nvim/site/pack/packer/opt/cmp-buffer/after/plugin/cmp_buffer.lua" },
@@ -187,7 +192,7 @@ _G.packer_plugins = {
     url = "https://github.com/windwp/nvim-autopairs"
   },
   ["nvim-cmp"] = {
-    after = { "cmp-nvim-lua", "cmp-buffer", "cmp-nvim-ultisnips", "cmp-path", "cmp-nvim-lsp" },
+    after = { "cmp-buffer", "cmp-path", "cmp-nvim-lsp", "cmp-nvim-ultisnips", "cmp-nvim-lua" },
     config = { "require('config.nvim-cmp')" },
     load_after = {
       ["lspkind-nvim"] = true
@@ -212,6 +217,12 @@ _G.packer_plugins = {
     path = "/Users/zhaoqi/.local/share/nvim/site/pack/packer/opt/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
   },
+  ["nvim-tree.lua"] = {
+    config = { "require('config.nvim-tree')" },
+    loaded = true,
+    path = "/Users/zhaoqi/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
+    url = "https://github.com/kyazdani42/nvim-tree.lua"
+  },
   ["nvim-treesitter"] = {
     config = { "require('config.treesitter')" },
     loaded = false,
@@ -219,6 +230,11 @@ _G.packer_plugins = {
     only_cond = false,
     path = "/Users/zhaoqi/.local/share/nvim/site/pack/packer/opt/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
+  },
+  ["nvim-web-devicons"] = {
+    loaded = true,
+    path = "/Users/zhaoqi/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
+    url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
   ["onehalf-lush"] = {
     loaded = true,
@@ -266,9 +282,13 @@ time([[Defining packer_plugins]], false)
 time([[Config for impatient.nvim]], true)
 require('impatient')
 time([[Config for impatient.nvim]], false)
+-- Config for: nvim-tree.lua
+time([[Config for nvim-tree.lua]], true)
+require('config.nvim-tree')
+time([[Config for nvim-tree.lua]], false)
 -- Config for: auto-pairs
 time([[Config for auto-pairs]], true)
-require('config.auto-pairs)
+require('config.auto-pairs')
 time([[Config for auto-pairs]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
