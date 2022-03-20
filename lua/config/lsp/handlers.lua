@@ -18,9 +18,13 @@ M.setup = function()
     virtual_text = false,
     -- show signs
     
-    signs = {
+    --[[ signs = {
       active = signs,
-    },
+    }, ]]
+    
+    -- disable sign
+    signs = false,
+
     -- dynamically check updateing
     update_in_insert = false,
     underline = false,
@@ -34,8 +38,7 @@ M.setup = function()
       prefix = "",
     },
   }
-
-  vim.diagnostic.config(config)
+  vim.diagnostic.config(config) 
 
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
     border = "rounded",
