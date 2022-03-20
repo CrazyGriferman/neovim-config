@@ -14,6 +14,9 @@ require("packer").startup({
 
     -- Useful lua functions used ny lots of plugins
     use "nvim-lua/plenary.nvim" 
+
+    -- tree sitter
+    use({ "nvim-treesitter/nvim-treesitter", event = 'BufEnter', run = ":TSUpdate", config = [[require('config.treesitter')]] })
     
     -- snippets
     use "SirVer/ultisnips"
@@ -47,6 +50,20 @@ require("packer").startup({
 
     -- markdown preview
     use "iamcco/markdown-preview.nvim"
+
+    -- autopair
+    use "windwp/nvim-autopairs"
+
+    -- File search, tag search (support fuzzy)
+    use({ "Yggdroot/LeaderF", cmd = "Leaderf", run = ":LeaderfInstallCExtension" })
+
+    -- showing keybindings
+    use {"folke/which-key.nvim",
+    event = "VimEnter",
+    config = function()
+      vim.defer_fn(function() require('config.which-key') end, 2000)
+    end
+    }
 
   end,
   config = {
