@@ -71,6 +71,15 @@ require("packer").startup({
     end
     }
 
+    -- Super fast buffer jump
+    use {
+      'phaazon/hop.nvim',
+      event = "VimEnter",
+      config = function()
+        vim.defer_fn(function() require('config.nvim_hop') end, 2000)
+      end
+    }
+
   end,
   config = {
     max_jobs = 16,
