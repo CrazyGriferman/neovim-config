@@ -11,16 +11,20 @@ require("packer").startup({
 
     -- Packer
     use({"wbthomason/packer.nvim", opt = true})
+    
+    -- snippets
+    use "SirVer/ultisnips"
+    use "honza/vim-snippets"
 
     -- theme
     use "rktjmp/lush.nvim"
     use "CodeGradox/onehalf-lush"
 
     -- distraction writing plugin
-    use({'Pocco81/TrueZen.nvim', config = [[require('config.true-zen')]]})
+    use "junegunn/goyo.vim"
 
-    -- preview image
-    use "heapslip/vimage.nvim"
+    -- markdown preview
+    use "iamcco/markdown-preview.nvim"
 
   end,
   config = {

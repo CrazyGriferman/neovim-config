@@ -69,11 +69,10 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
-  ["TrueZen.nvim"] = {
-    config = { "require('config.true-zen')" },
+  ["goyo.vim"] = {
     loaded = true,
-    path = "/Users/zhaoqi/.local/share/nvim/site/pack/packer/start/TrueZen.nvim",
-    url = "https://github.com/Pocco81/TrueZen.nvim"
+    path = "/Users/zhaoqi/.local/share/nvim/site/pack/packer/start/goyo.vim",
+    url = "https://github.com/junegunn/goyo.vim"
   },
   ["impatient.nvim"] = {
     config = { "require('impatient')" },
@@ -86,6 +85,11 @@ _G.packer_plugins = {
     path = "/Users/zhaoqi/.local/share/nvim/site/pack/packer/start/lush.nvim",
     url = "https://github.com/rktjmp/lush.nvim"
   },
+  ["markdown-preview.nvim"] = {
+    loaded = true,
+    path = "/Users/zhaoqi/.local/share/nvim/site/pack/packer/start/markdown-preview.nvim",
+    url = "https://github.com/iamcco/markdown-preview.nvim"
+  },
   ["onehalf-lush"] = {
     loaded = true,
     path = "/Users/zhaoqi/.local/share/nvim/site/pack/packer/start/onehalf-lush",
@@ -97,10 +101,15 @@ _G.packer_plugins = {
     path = "/Users/zhaoqi/.local/share/nvim/site/pack/packer/opt/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
   },
-  ["vimage.nvim"] = {
+  ultisnips = {
     loaded = true,
-    path = "/Users/zhaoqi/.local/share/nvim/site/pack/packer/start/vimage.nvim",
-    url = "https://github.com/heapslip/vimage.nvim"
+    path = "/Users/zhaoqi/.local/share/nvim/site/pack/packer/start/ultisnips",
+    url = "https://github.com/SirVer/ultisnips"
+  },
+  ["vim-snippets"] = {
+    loaded = true,
+    path = "/Users/zhaoqi/.local/share/nvim/site/pack/packer/start/vim-snippets",
+    url = "https://github.com/honza/vim-snippets"
   }
 }
 
@@ -109,10 +118,6 @@ time([[Defining packer_plugins]], false)
 time([[Config for impatient.nvim]], true)
 require('impatient')
 time([[Config for impatient.nvim]], false)
--- Config for: TrueZen.nvim
-time([[Config for TrueZen.nvim]], true)
-require('config.true-zen')
-time([[Config for TrueZen.nvim]], false)
 if should_profile then save_profiles() end
 
 end)
