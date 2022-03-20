@@ -57,6 +57,12 @@ require("packer").startup({
     -- File search, tag search (support fuzzy)
     use({ "Yggdroot/LeaderF", cmd = "Leaderf", run = ":LeaderfInstallCExtension" })
 
+    -- telescope fuzzy search 
+    use {
+      'nvim-telescope/telescope.nvim',
+      requires = { {'nvim-lua/plenary.nvim'} }
+    }
+
     -- showing keybindings
     use {"folke/which-key.nvim",
     event = "VimEnter",
