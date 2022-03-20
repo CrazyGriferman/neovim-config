@@ -113,3 +113,10 @@ nnoremap <leader>l :NvimTreeToggle<CR>
 nnoremap <leader>ll :NvimTreeFocus<CR>
 nnoremap <leader>nr :NvimTreeRefresh<CR>
 nnoremap <leader>nf :NvimTreeFindFile<CR>
+
+
+"""""""""""""""""""""""""""""md-img-paste settings"""""""""""""""""""""
+let g:mdip_imgdir = '.'
+
+" insert clipboard image snippet
+autocmd FileType markdown nmap <buffer><silent> <leader>i :call mdip#MarkdownClipboardImage()<CR>

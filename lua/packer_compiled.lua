@@ -176,6 +176,11 @@ _G.packer_plugins = {
     path = "/Users/zhaoqi/.local/share/nvim/site/pack/packer/start/markdown-preview.nvim",
     url = "https://github.com/iamcco/markdown-preview.nvim"
   },
+  ["md-img-paste.vim"] = {
+    loaded = true,
+    path = "/Users/zhaoqi/.local/share/nvim/site/pack/packer/start/md-img-paste.vim",
+    url = "https://github.com/ferrine/md-img-paste.vim"
+  },
   ["nlsp-settings.nvim"] = {
     loaded = true,
     path = "/Users/zhaoqi/.local/share/nvim/site/pack/packer/start/nlsp-settings.nvim",
@@ -192,7 +197,7 @@ _G.packer_plugins = {
     url = "https://github.com/windwp/nvim-autopairs"
   },
   ["nvim-cmp"] = {
-    after = { "cmp-buffer", "cmp-path", "cmp-nvim-lsp", "cmp-nvim-ultisnips", "cmp-nvim-lua" },
+    after = { "cmp-nvim-lsp", "cmp-buffer", "cmp-nvim-ultisnips", "cmp-nvim-lua", "cmp-path" },
     config = { "require('config.nvim-cmp')" },
     load_after = {
       ["lspkind-nvim"] = true
@@ -278,14 +283,14 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: impatient.nvim
-time([[Config for impatient.nvim]], true)
-require('impatient')
-time([[Config for impatient.nvim]], false)
 -- Config for: nvim-tree.lua
 time([[Config for nvim-tree.lua]], true)
 require('config.nvim-tree')
 time([[Config for nvim-tree.lua]], false)
+-- Config for: impatient.nvim
+time([[Config for impatient.nvim]], true)
+require('impatient')
+time([[Config for impatient.nvim]], false)
 -- Config for: auto-pairs
 time([[Config for auto-pairs]], true)
 require('config.auto-pairs')
@@ -305,7 +310,7 @@ vim.cmd [[au!]]
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
 vim.cmd [[au VimEnter * ++once lua require("packer.load")({'hop.nvim', 'which-key.nvim'}, { event = "VimEnter *" }, _G.packer_plugins)]]
-vim.cmd [[au BufEnter * ++once lua require("packer.load")({'lspkind-nvim', 'nvim-treesitter'}, { event = "BufEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au BufEnter * ++once lua require("packer.load")({'nvim-treesitter', 'lspkind-nvim'}, { event = "BufEnter *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end

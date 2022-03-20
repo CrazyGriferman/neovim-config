@@ -92,6 +92,8 @@ require("packer").startup({
     -- liveload
     use "turbio/bracey.vim"
 
+    -- markdown img-paste snippet
+    use "ferrine/md-img-paste.vim"
 
   end,
   config = {
