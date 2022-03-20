@@ -90,3 +90,7 @@ let g:Lf_PopupColorscheme = 'gruvbox_material'
 " Change keybinding in LeaderF prompt mode, use ctrl-n and ctrl-p to navigate
 " items.
 let g:Lf_CommandMap = {'<C-J>': ['<C-N>'], '<C-K>': ['<C-P>']}
+
+
+"""""""""""""""""""""""""""""which-key settings"""""""""""""""""""""
+nnoremap <space> :WhichKey<CR>
