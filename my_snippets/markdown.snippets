@@ -1,0 +1,20 @@
+global !p
+def gen_header(snip):
+	placeholders_string = snip.buffer[snip.line].strip()
+	level = int(placeholders_string[0])
+
+	# erase current line
+	snip.buffer[snip.line] = ""
+	line_content = "#"*level + " ${1:Section Name}"
+	line_content += '\n$0'
+
+	snip.expand_anon(line_content)
+endglobal
+
+snippet blog "start writing blog posts"
+---
+title: $1
+categories: $2
+---
+$3
+endsnippet
