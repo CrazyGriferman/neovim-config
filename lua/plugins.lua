@@ -17,8 +17,8 @@ require("packer").startup({
 
     -- tree sitter
     use({ "nvim-treesitter/nvim-treesitter", event = 'BufEnter', run = ":TSUpdate", config = [[require('config.treesitter')]] })
-    
-    -- snippets
+
+    -- -- snippets
     use "SirVer/ultisnips"
     use "honza/vim-snippets"
 
@@ -94,6 +94,9 @@ require("packer").startup({
 
     -- markdown img-paste snippet
     use "ferrine/md-img-paste.vim"
+
+    -- translator tools
+    use "voldikss/vim-translator"
 
   end,
   config = {

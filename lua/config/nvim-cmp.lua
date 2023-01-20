@@ -8,7 +8,7 @@ cmp.setup({
       -- For `ultisnips` user.
       vim.fn["UltiSnips#Anon"](args.body)
     end,
-  },
+  }, 
   mapping = {
     ['<Tab>'] = function(fallback)
       if cmp.visible() then

@@ -14,7 +14,7 @@ let g:UltiSnipsSnippetDirectories=['UltiSnips', 'my_snippets']
 
 
 """"""""""""""""""""""""""""""Goyo settings""""""""""""""""""""""""""""""
-let g:goyo_width=85
+let g:goyo_width=80
 nnoremap <leader>z :Goyo<CR>
 
 
@@ -120,3 +120,6 @@ let g:mdip_imgdir = '.'
 
 " insert clipboard image snippet
 autocmd FileType markdown nmap <buffer><silent> <leader>i :call mdip#MarkdownClipboardImage()<CR>
+
+"""""""""""""""""""""""""""""vim-translator settings"""""""""""""""""""""
+let g:translator_default_engines = ["bing"]
