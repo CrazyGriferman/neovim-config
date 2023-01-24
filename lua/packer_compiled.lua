@@ -9,23 +9,26 @@ vim.api.nvim_command('packadd packer.nvim')
 
 local no_errors, error_msg = pcall(function()
 
-  local time
-  local profile_info
-  local should_profile = false
-  if should_profile then
-    local hrtime = vim.loop.hrtime
-    profile_info = {}
-    time = function(chunk, start)
-      if start then
-        profile_info[chunk] = hrtime()
-      else
-        profile_info[chunk] = (hrtime() - profile_info[chunk]) / 1e6
-      end
+_G._packer = _G._packer or {}
+_G._packer.inside_compile = true
+
+local time
+local profile_info
+local should_profile = false
+if should_profile then
+  local hrtime = vim.loop.hrtime
+  profile_info = {}
+  time = function(chunk, start)
+    if start then
+      profile_info[chunk] = hrtime()
+    else
+      profile_info[chunk] = (hrtime() - profile_info[chunk]) / 1e6
     end
-  else
-    time = function(chunk, start) end
   end
-  
+else
+  time = function(chunk, start) end
+end
+
 local function save_profiles(threshold)
   local sorted_times = {}
   for chunk_name, time_taken in pairs(profile_info) do
@@ -38,8 +41,10 @@ local function save_profiles(threshold)
       results[i] = elem[1] .. ' took ' .. elem[2] .. 'ms'
     end
   end
+  if threshold then
+    table.insert(results, '(Only showing plugins that took longer than ' .. threshold .. ' ms ' .. 'to load)')
+  end
 
-  _G._packer = _G._packer or {}
   _G._packer.profile_output = results
 end
 
@@ -197,7 +202,7 @@ _G.packer_plugins = {
     url = "https://github.com/windwp/nvim-autopairs"
   },
   ["nvim-cmp"] = {
-    after = { "cmp-nvim-lsp", "cmp-buffer", "cmp-nvim-lua", "cmp-nvim-ultisnips", "cmp-path" },
+    after = { "cmp-buffer", "cmp-nvim-lsp", "cmp-nvim-lua", "cmp-nvim-ultisnips", "cmp-path" },
     config = { "require('config.nvim-cmp')" },
     load_after = {
       ["lspkind-nvim"] = true
@@ -231,7 +236,7 @@ _G.packer_plugins = {
   ["nvim-treesitter"] = {
     config = { "require('config.treesitter')" },
     loaded = false,
-    needs_bufread = true,
+    needs_bufread = false,
     only_cond = false,
     path = "/Users/zhaoqi/.local/share/nvim/site/pack/packer/opt/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
@@ -267,6 +272,11 @@ _G.packer_plugins = {
     path = "/Users/zhaoqi/.local/share/nvim/site/pack/packer/start/ultisnips",
     url = "https://github.com/SirVer/ultisnips"
   },
+  undotree = {
+    loaded = true,
+    path = "/Users/zhaoqi/.local/share/nvim/site/pack/packer/start/undotree",
+    url = "https://github.com/mbbill/undotree"
+  },
   ["vim-snippets"] = {
     loaded = true,
     path = "/Users/zhaoqi/.local/share/nvim/site/pack/packer/start/vim-snippets",
@@ -288,6 +298,10 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: nvim-tree.lua
+time([[Config for nvim-tree.lua]], true)
+require('config.nvim-tree')
+time([[Config for nvim-tree.lua]], false)
 -- Config for: impatient.nvim
 time([[Config for impatient.nvim]], true)
 require('impatient')
@@ -296,10 +310,6 @@ time([[Config for impatient.nvim]], false)
 time([[Config for auto-pairs]], true)
 require('config.auto-pairs')
 time([[Config for auto-pairs]], false)
--- Config for: nvim-tree.lua
-time([[Config for nvim-tree.lua]], true)
-require('config.nvim-tree')
-time([[Config for nvim-tree.lua]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd ultisnips ]]
@@ -307,17 +317,30 @@ time([[Sequenced loading]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Leaderf lua require("packer.load")({'LeaderF'}, { cmd = "Leaderf", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.api.nvim_create_user_command, 'Leaderf', function(cmdargs)
+          require('packer.load')({'LeaderF'}, { cmd = 'Leaderf', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'LeaderF'}, {}, _G.packer_plugins)
+          return vim.fn.getcompletion('Leaderf ', 'cmdline')
+      end})
 time([[Defining lazy-load commands]], false)
 
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au VimEnter * ++once lua require("packer.load")({'which-key.nvim', 'hop.nvim'}, { event = "VimEnter *" }, _G.packer_plugins)]]
 vim.cmd [[au BufEnter * ++once lua require("packer.load")({'nvim-treesitter', 'lspkind-nvim'}, { event = "BufEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au VimEnter * ++once lua require("packer.load")({'which-key.nvim', 'hop.nvim'}, { event = "VimEnter *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
+
+_G._packer.inside_compile = false
+if _G._packer.needs_bufread == true then
+  vim.cmd("doautocmd BufRead")
+end
+_G._packer.needs_bufread = false
+
 if should_profile then save_profiles() end
 
 end)

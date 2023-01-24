@@ -19,7 +19,7 @@ nnoremap <leader>z :Goyo<CR>
 
 
 """"""""""""""""""""""""""""""markdown-preview settings""""""""""""""""""""""""""""""
-nnoremap <leader>p :MarkdownPreviewToggle<CR>
+nnoremap <leader>mm :MarkdownPreviewToggle<CR>
 
 
 """""""""""""""""""""""""""""LeaderF settings"""""""""""""""""""""
@@ -44,13 +44,16 @@ let g:Lf_DefaultMode = 'NameOnly'
 
 " Popup window settings
 let w = float2nr(&columns * 0.8)
-if w > 140
-  let g:Lf_PopupWidth = 140
-else
-  let g:Lf_PopupWidth = w
-endif
-
+let g:Lf_PopupWidth = w
+"if w > 140
+"  let g:Lf_PopupWidth = 140
+"else
+"  let g:Lf_PopupWidth = w
+"endif
 let g:Lf_PopupPosition = [0, float2nr((&columns - g:Lf_PopupWidth)/2)]
+
+"set popupmode
+let g:Lf_PreviewInPopup = 1
 
 " Do not use version control tool to list files under a directory since
 " submodules are not searched by default.
@@ -77,11 +80,11 @@ nnoremap <silent> <leader>fg :<C-U>Leaderf rg --no-messages --popup<CR>
 
 " Search vim help files
 nnoremap <silent> <leader>fh :<C-U>Leaderf help --popup<CR>
-nnoremap <silent> <leader>h :<C-U>echoerr "Use \<lt>leader>fh instead!"<CR>
+" nnoremap <silent> <leader>h :<C-U>echoerr "Use \<lt>leader>fh instead!"<CR>
 
 " Search tags in current buffer
 nnoremap <silent> <leader>ft :<C-U>Leaderf bufTag --popup<CR>
-nnoremap <silent> <leader>t :<C-U>echoerr "Use \<lt>leader>ft instead!"<CR>
+" nnoremap <silent> <leader>t :<C-U>echoerr "Use \<lt>leader>ft instead!"<CR>
 
 " Switch buffers
 nnoremap <silent> <leader>fb :<C-U>Leaderf buffer --popup<CR>
@@ -93,7 +96,10 @@ let g:Lf_PopupColorscheme = 'gruvbox_material'
 
 " Change keybinding in LeaderF prompt mode, use ctrl-n and ctrl-p to navigate
 " items.
-let g:Lf_CommandMap = {'<C-J>': ['<C-N>'], '<C-K>': ['<C-P>']}
+" let g:Lf_CommandMap = {'<C-J>': ['<C-N>'], '<C-K>': ['<C-P>']}
+
+" change popup preview window mode
+let g:Lf_CommandMap = {'<C-Down>': ['<C-D>'], '<C-Up>': ['<C-E>']}
 
 
 """""""""""""""""""""""""""""which-key settings"""""""""""""""""""""
@@ -107,7 +113,7 @@ nnoremap <leader>tb <cmd>Telescope buffers<cr>
 nnoremap <leader>th <cmd>Telescope help_tags<cr>
 
 
-"""""""""""""""""""""""""""""Telescope settings"""""""""""""""""""""
+"""""""""""""""""""""""""""""Te/lescope settings"""""""""""""""""""""
 
 nnoremap <leader>l :NvimTreeToggle<CR>
 nnoremap <leader>ll :NvimTreeFocus<CR>
@@ -123,3 +129,15 @@ autocmd FileType markdown nmap <buffer><silent> <leader>i :call mdip#MarkdownCli
 
 """""""""""""""""""""""""""""vim-translator settings"""""""""""""""""""""
 let g:translator_default_engines = ["bing"]
+
+"""""""""""""""""""""""""""""m settings"""""""""""""""""""""
+
+nnoremap <leader>hw :HopWord<CR>
+nnoremap <leader>hl :HopLine<CR>
+nnoremap <leader>ha :HopAnywhere<CR>
+nnoremap <leader>hh :HopChar2<CR>
+
+"""""""""""""""""""""""""""""undotree settings"""""""""""""""""""""
+nnoremap <leader>u :UndotreeToggle<CR>
+nnoremap <leader>uf :UndotreeFocus<CR>
+

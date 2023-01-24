@@ -32,6 +32,9 @@ require("packer").startup({
     use {"hrsh7th/cmp-path", after = "nvim-cmp"}
     use {"hrsh7th/cmp-buffer", after = "nvim-cmp"}
 
+    -- image preview
+    -- use {'edluffy/hologram.nvim', config = [[require('config.hologram')]]}
+
     -- custom utilsnips support
     use {"quangnguyen30192/cmp-nvim-ultisnips", after = {'nvim-cmp', 'ultisnips'}}
 
@@ -98,6 +101,15 @@ require("packer").startup({
     -- translator tools
     use "voldikss/vim-translator"
 
+    -- undotree
+    use "mbbill/undotree"
+    
+    -- lsp manager
+    use {
+      "williamboman/mason.nvim",
+      config = [[require('config.mason')]]
+    }
+    
   end,
   config = {
     max_jobs = 16,
