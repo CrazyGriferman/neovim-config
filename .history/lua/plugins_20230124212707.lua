@@ -43,7 +43,8 @@ require("packer").startup({
     }
 
     -- theme
-    use { "catppuccin/nvim", as = "catppuccin" }
+    use "rktjmp/lush.nvim"
+    use "CodeGradox/onehalf-lush"
 
     -- distraction writing plugin
     use "junegunn/goyo.vim"
@@ -52,14 +53,24 @@ require("packer").startup({
     use "iamcco/markdown-preview.nvim"
 
     -- showing keybindings
-    use "folke/which-key.nvim"
+    use {"folke/which-key.nvim",
+    event = "VimEnter",
+    config = function()
+      vim.defer_fn(function() require('which-key') end, 2000)
+    end
+    }
 
     -- tree sitter
-    use({ "nvim-treesitter/nvim-treesitter"})
+    use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 
     -- Super fast buffer jump
-    use 'phaazon/hop.nvim'
-    
+    use {
+      'phaazon/hop.nvim',
+      event = "VimEnter",
+      config = function()
+        vim.defer_fn(function() require('hop') end, 2000)
+      end
+    }
     
 
     -- autopair
@@ -90,6 +101,9 @@ require("packer").startup({
 
     -- markdown img-paste snippet
     use "ferrine/md-img-paste.vim"
+
+    -- translator tools
+    use "voldikss/vim-translator"
 
     -- undotree
     use "mbbill/undotree"

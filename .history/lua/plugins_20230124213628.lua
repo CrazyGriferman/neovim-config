@@ -43,7 +43,8 @@ require("packer").startup({
     }
 
     -- theme
-    use { "catppuccin/nvim", as = "catppuccin" }
+    use "rktjmp/lush.nvim"
+    use "CodeGradox/onehalf-lush"
 
     -- distraction writing plugin
     use "junegunn/goyo.vim"
@@ -52,14 +53,32 @@ require("packer").startup({
     use "iamcco/markdown-preview.nvim"
 
     -- showing keybindings
-    use "folke/which-key.nvim"
+    use {"folke/which-key.nvim",
+    event = "VimEnter",
+    config = function()
+      vim.defer_fn(function() require('which-key') end, 2000)
+    end
+    }
 
     -- tree sitter
-    use({ "nvim-treesitter/nvim-treesitter"})
+    use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 
     -- Super fast buffer jump
-    use 'phaazon/hop.nvim'
-    
+    use {
+      'phaazon/hop.nvim',
+      event = "VimEnter",
+      config = function()
+        vim.defer_fn(function() require('hop') end, 2000)
+        vim.cmd[[ hi HopNextKey cterm=bold ctermfg=176 gui=bold guibg=#ff00ff guifg=#ffffff ]]
+        vim.cmd[[ hi HopNextKey1 cterm=bold ctermfg=176 gui=bold guibg=#ff00ff guifg=#ffffff ]]
+        vim.cmd[[ hi HopNextKey2 cterm=bold ctermfg=176 gui=bold guibg=#ff00ff guifg=#ffffff ]]
+        require('hop').setup({
+          case_insensitive = true,
+          char2_fallback_key = '<CR>',
+        })
+        vim.api.nvim_set_keymap('n', 'f', "<cmd>lua require'hop'.hint_char2()<cr>", {noremap = true})
+      end
+    }
     
 
     -- autopair
@@ -90,6 +109,9 @@ require("packer").startup({
 
     -- markdown img-paste snippet
     use "ferrine/md-img-paste.vim"
+
+    -- translator tools
+    use "voldikss/vim-translator"
 
     -- undotree
     use "mbbill/undotree"

@@ -2,17 +2,6 @@
 lua require('lua-init')
 
 
-
-""""""""""""""""""""""""""""""UltiSnips settings"""""""""""""""""""""""""""""" 
-let g:UltiSnipsExpandTrigger="<Tab>"  " use <Tab> to trigger autocompletion
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-
-" Configuration for custom snippets directory, see
-" https://jdhao.github.io/2019/04/17/neovim_snippet_s1/ for details.
-let g:UltiSnipsSnippetDirectories=['UltiSnips', 'my_snippets']
-
-
 """"""""""""""""""""""""""""""Goyo settings""""""""""""""""""""""""""""""
 let g:goyo_width=80
 nnoremap <leader>z :Goyo<CR>

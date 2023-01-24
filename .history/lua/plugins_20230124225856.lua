@@ -43,7 +43,8 @@ require("packer").startup({
     }
 
     -- theme
-    use { "catppuccin/nvim", as = "catppuccin" }
+    use "rktjmp/lush.nvim"
+    use "CodeGradox/onehalf-lush"
 
     -- distraction writing plugin
     use "junegunn/goyo.vim"
@@ -90,6 +91,9 @@ require("packer").startup({
 
     -- markdown img-paste snippet
     use "ferrine/md-img-paste.vim"
+
+    -- translator tools
+    use "voldikss/vim-translator"
 
     -- undotree
     use "mbbill/undotree"

@@ -91,6 +91,9 @@ require("packer").startup({
     -- markdown img-paste snippet
     use "ferrine/md-img-paste.vim"
 
+    -- translator tools
+    use "voldikss/vim-translator"
+
     -- undotree
     use "mbbill/undotree"
     

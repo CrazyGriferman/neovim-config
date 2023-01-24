@@ -43,7 +43,8 @@ require("packer").startup({
     }
 
     -- theme
-    use { "catppuccin/nvim", as = "catppuccin" }
+    use "rktjmp/lush.nvim"
+    use "CodeGradox/onehalf-lush"
 
     -- distraction writing plugin
     use "junegunn/goyo.vim"
@@ -51,22 +52,13 @@ require("packer").startup({
     -- markdown preview
     use "iamcco/markdown-preview.nvim"
 
-    -- showing keybindings
-    use "folke/which-key.nvim"
-
-    -- tree sitter
-    use({ "nvim-treesitter/nvim-treesitter"})
-
-    -- Super fast buffer jump
-    use 'phaazon/hop.nvim'
-    
-    
-
     -- autopair
     use "windwp/nvim-autopairs"
 
     -- autotag
-    use 'windwp/nvim-ts-autotag'
+    use {
+      'windwp/nvim-ts-autotag'
+    }
 
     -- File search, tag search (support fuzzy)
     use({ "Yggdroot/LeaderF", cmd = "Leaderf", run = ":LeaderfInstallCExtension" })
@@ -77,6 +69,25 @@ require("packer").startup({
       requires = { {'nvim-lua/plenary.nvim'} }
     }
 
+    -- showing keybindings
+    use {"folke/which-key.nvim",
+    event = "VimEnter",
+    config = function()
+      vim.defer_fn(function() require('which-key') end, 2000)
+    end
+    }
+
+    -- tree sitter
+    use({ "nvim-treesitter/nvim-treesitter", event = 'BufEnter', run = ":TSUpdate" })
+
+    -- Super fast buffer jump
+    use {
+      'phaazon/hop.nvim',
+      event = "VimEnter",
+      config = function()
+        vim.defer_fn(function() require('nvim_hop') end, 2000)
+      end
+    }
 
     use {
       "kyazdani42/nvim-tree.lua",
@@ -90,6 +101,9 @@ require("packer").startup({
 
     -- markdown img-paste snippet
     use "ferrine/md-img-paste.vim"
+
+    -- translator tools
+    use "voldikss/vim-translator"
 
     -- undotree
     use "mbbill/undotree"
