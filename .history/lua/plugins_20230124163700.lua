@@ -71,18 +71,12 @@ require("packer").startup({
     -- showing keybindings
     use {"folke/which-key.nvim",
     event = "VimEnter",
-    config = function()
-      vim.defer_fn(function() require('config.which-key') end, 2000)
-    end
     }
 
     -- Super fast buffer jump
     use {
       'phaazon/hop.nvim',
       event = "VimEnter",
-      config = function()
-        vim.defer_fn(function() require('config.nvim_hop') end, 2000)
-      end
     }
 
     use {

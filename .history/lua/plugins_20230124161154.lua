@@ -7,7 +7,7 @@ local util = require('packer.util')
 require("packer").startup({
   function(use)
     -- it is recommened to put impatient.nvim before any other plugins
-    use {'lewis6991/impatient.nvim'}
+    use {'lewis6991/impatient.nvim', config = [[require('impatient')]]}
 
     -- Packer
     use({"wbthomason/packer.nvim", opt = true})
@@ -16,21 +16,22 @@ require("packer").startup({
     use "nvim-lua/plenary.nvim" 
 
     -- tree sitter
-    use({ "nvim-treesitter/nvim-treesitter", event = 'BufEnter', run = ":TSUpdate" })
+    use({ "nvim-treesitter/nvim-treesitter", event = 'BufEnter', run = ":TSUpdate", config = [[require('config.treesitter')]] })
 
     -- use {'edluffy/hologram.nvim', config = [[require('config.hologram')]]}
 
     use {
       'VonHeikemen/lsp-zero.nvim',
       branch = 'v1.x',
+      config = [[require('config.lsp')]],
       requires = {
         -- LSP Support
         {'neovim/nvim-lspconfig'},             -- Required
-        {'williamboman/mason.nvim'},           -- Optional
+        {'williamboman/mason.nvim', config = [[require('config.mason')]]},           -- Optional
         {'williamboman/mason-lspconfig.nvim'}, -- Optional
 
         -- Autocompletion
-        {'hrsh7th/nvim-cmp'},         -- Required
+        {'hrsh7th/nvim-cmp', config = [[require('config.nvim-cmp')]]},         -- Required
         {'hrsh7th/cmp-nvim-lsp'},     -- Required
         {'hrsh7th/cmp-buffer'},       -- Optional
         {'hrsh7th/cmp-path'},         -- Optional
@@ -89,8 +90,7 @@ require("packer").startup({
       "kyazdani42/nvim-tree.lua",
       requires = {
         'kyazdani42/nvim-web-devicons', -- optional, for file icon
-      }
-    }
+      }, config = [[require('config.nvim-tree')]]}
 
     -- liveload
     use "turbio/bracey.vim"

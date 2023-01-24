@@ -72,7 +72,7 @@ require("packer").startup({
     use {"folke/which-key.nvim",
     event = "VimEnter",
     config = function()
-      vim.defer_fn(function() require('config.which-key') end, 2000)
+      vim.defer_fn(function() require('which-key') end, 2000)
     end
     }
 
@@ -81,7 +81,7 @@ require("packer").startup({
       'phaazon/hop.nvim',
       event = "VimEnter",
       config = function()
-        vim.defer_fn(function() require('config.nvim_hop') end, 2000)
+        vim.defer_fn(function() require('nvim_hop') end, 2000)
       end
     }
 
