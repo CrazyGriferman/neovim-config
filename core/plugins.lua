@@ -72,8 +72,8 @@ vim.keymap.set('n', '<leader>fr', ':<C-U>Leaderf mru --popup<CR>', { silent = tr
 vim.g.Lf_PopupColorscheme = 'gruvbox_material'
 
 
--- change popup preview window mode
-vim.g.Lf_CommandMap = { ['<C-Down>'] = '<C-D>', ['<C-Up>'] = '<C-E>'}
+-- change popup preview window mode (current not working)
+-- vim.g.Lf_CommandMap = { ['<C-Down>'] = '<C-D>', ['<C-Up>'] = '<C-E>'}
 
 
 -- Telescope settings

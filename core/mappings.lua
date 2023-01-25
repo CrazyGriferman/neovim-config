@@ -34,8 +34,8 @@ vim.keymap.set("v", "<leader>d", "\"_d")
 --ban Q
 vim.keymap.set("n", "Q", "<nop>")
 
---initiate a new tmux session
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+--initiate a new tmux session (current not working)
+-- vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
 --lsp buf format (use pretieer)
 vim.keymap.set("n", "<leader>f", function()
