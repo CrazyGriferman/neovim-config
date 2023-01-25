@@ -92,7 +92,6 @@ let g:Lf_CommandMap = {'<C-Down>': ['<C-D>'], '<C-Up>': ['<C-E>']}
 
 
 """""""""""""""""""""""""""""which-key settings"""""""""""""""""""""
-nnoremap <space> :WhichKey<CR>
 
 
 """""""""""""""""""""""""""""Telescope settings"""""""""""""""""""""

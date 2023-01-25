@@ -43,7 +43,7 @@ require("packer").startup({
     }
 
     -- theme
-    use { "catppuccin/nvim", as = "catppuccin" }
+    use { "Shatur/neovim-ayu" }
 
     -- distraction writing plugin
     use "junegunn/goyo.vim"
@@ -69,7 +69,7 @@ require("packer").startup({
     use 'windwp/nvim-ts-autotag'
 
     -- File search, tag search (support fuzzy)
-    use({ "Yggdroot/LeaderF", cmd = "Leaderf", run = ":LeaderfInstallCExtension" })
+    use "Yggdroot/LeaderF"
 
     -- telescope fuzzy search 
     use {
