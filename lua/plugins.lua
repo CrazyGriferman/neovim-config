@@ -94,6 +94,9 @@ require("packer").startup({
     -- undotree
     use "mbbill/undotree"
     
+    -- better quickfix list window
+    use "kevinhwang91/nvim-bqf"
+
   end,
   config = {
     max_jobs = 16,
