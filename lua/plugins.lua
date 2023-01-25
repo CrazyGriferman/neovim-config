@@ -97,6 +97,9 @@ require("packer").startup({
     -- better quickfix list window
     use "kevinhwang91/nvim-bqf"
 
+    -- file navigation
+    use "theprimeagen/harpoon" 
+
   end,
   config = {
     max_jobs = 16,
