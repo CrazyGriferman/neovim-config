@@ -22,10 +22,15 @@ vim.keymap.set("n", "N", "Nzzzv")
 -- paste text without losing cureent buffer
 vim.keymap.set("x", "<leader>p", "\"_dP")
 
---paste things in system register(clipboard)
+-- paste from system clipboard
+vim.keymap.set("n", "<leader>pp", "\"+p")
+
+--copy things in system register(clipboard)
 vim.keymap.set("n", "<leader>y", "\"+y")
 vim.keymap.set("v", "<leader>y", "\"+y")
 vim.keymap.set("n", "<leader>Y", "\"+Y")
+
+
 
 --delete things in void register
 vim.keymap.set("n", "<leader>d", "\"_d")

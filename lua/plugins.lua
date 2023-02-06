@@ -98,7 +98,29 @@ require("packer").startup({
     use "kevinhwang91/nvim-bqf"
 
     -- file navigation
-    use "theprimeagen/harpoon" 
+    use "theprimeagen/harpoon"
+
+    -- nvim ide
+    use "ldelossa/nvim-ide"
+
+    -- debugger
+    use "mfussenegger/nvim-dap"
+    use "rcarriga/nvim-dap-ui"
+
+    --fzf
+    use { 'ibhagwan/fzf-lua',
+      -- optional for icon support
+      requires = { 'nvim-tree/nvim-web-devicons' }
+    }
+
+    -- better notification
+    use "rcarriga/nvim-notify"
+
+    -- preview window 
+    use "dnlhc/glance.nvim"
+
+    -- git integration
+    use "lewis6991/gitsigns.nvim"
 
   end,
   config = {
