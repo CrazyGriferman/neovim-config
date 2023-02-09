@@ -71,6 +71,7 @@ vim.keymap.set('n', '<leader>fr', ':<C-U>Leaderf mru --popup<CR>', { silent = tr
 
 vim.g.Lf_PopupColorscheme = 'gruvbox_material'
 
+vim.keymap.set('n', '<leader><space>', ':<C-U>Leaderf mru --popup<CR>')
 
 -- change popup preview window mode (current not working)
 -- vim.g.Lf_CommandMap = { ['<C-Down>'] = '<C-D>', ['<C-Up>'] = '<C-E>'}
@@ -108,3 +109,16 @@ vim.keymap.set('n', '<leader>ha', ':HopAnywhere<CR>')
 
 vim.keymap.set('n', '<leader>u', ':UndotreeToggle<CR>')
 vim.keymap.set('n', '<leader>uf', ':UndotreeFocus<CR>')
+
+-- nvim-ide settings
+
+vim.keymap.set('n', '<leader>il', ':Workspace LeftPanelToggle<CR>')
+vim.keymap.set('n', '<leader>ir', ':Workspace RightPanelToggle<CR>')
+
+-- nvim-dap
+vim.fn.sign_define('DapBreakpoint',
+                   {text = '🟥', texthl = '', linehl = '', numhl = ''})
+vim.fn.sign_define('DapBreakpointRejected',
+                   {text = '🟩', texthl = '', linehl = '', numhl = ''})
+vim.fn.sign_define('DapStopped',
+                   {text = '⭐️', texthl = '', linehl = '', numhl = ''})
